@@ -8,6 +8,7 @@ double restar(double a, double b);
 double dividir(double a, double b);
 double multiplicar(double a, double b);
 double potencia(double base, double exponente);
+double raizCuadrada(double numero);
 int modulo(int a, int b);
 
 int main() {
@@ -19,14 +20,15 @@ int main() {
 		cout << "Elige una opcion: ";
 		cin >> opcion;
 
-		if (opcion >= 1 && opcion <= 6) {
-			cout << "Introduce el primer numero: ";
-			cin >> num1;
-			cout << "Introduce el segundo numero: ";
-			cin >> num2;
+		if (opcion >= 1 && opcion <= 7) {
+			
 
 			switch (opcion) {
 			case 1:
+				cout << "Introduce el primer numero: ";
+				cin >> num1;
+				cout << "Introduce el segundo numero: ";
+				cin >> num2;
 				resultado = sumar(num1, num2);
 				cout << "Resultlado: " << resultado << endl;
 				break;
@@ -52,16 +54,6 @@ int main() {
 				cout << "Resultado: " << resultado << endl;
 				break;
 			case 6:
-				int entero1, entero2;
-				cout << "Introduce el primer n�mero entero: ";
-				cin >> entero1;
-				cout << "Introduce el segundo n�mero entero:";
-				cin >> entero2;
-				if (entero2 != 0) {
-					cout << "Resultado: " << modulo(entero1, entero2) << endl;
-				}
-				else {
-					cout << "Error: Divisi�n por cero" << endl;
 				cout << "Introduce un numero: ";
 				cin >> num1;
 				if (num1 >= 0) {
@@ -70,6 +62,19 @@ int main() {
 				}
 				else {
 					cout << "Error: No se puede calcular raiz de numero negativo" << endl;
+				}
+				break;
+			case 7:
+				int entero1, entero2;
+				cout << "Introduce el primer numero entero: ";
+				cin >> entero1;
+				cout << "Introduce el segundo numero entero:";
+				cin >> entero2;
+				if (entero2 != 0) {
+					cout << "Resultado: " << modulo(entero1, entero2) << endl;
+				}
+				else {
+					cout << "Error: Division por cero" << endl;
 				}
 				break;
 			}
@@ -93,7 +98,8 @@ void mostrarMenu() {
 	cout << "3. Multiplicar" << endl;
 	cout << "4. Dividir" << endl;
 	cout << "5. Potencia (a^b)" << endl;
-	cout << "6. Modulo (resto) -" << endl;
+	cout << "6. Raiz cuadrada" << endl;
+	cout << "7. Modulo (resto) -" << endl;
 	cout << "0. Salir" << endl;
 }
 
@@ -140,4 +146,15 @@ double potencia(double base, double exponente) {
 }
 int modulo(int a, int b) {
 	return a % b;
+}
+
+double raizCuadrada(double numero) {
+	if (numero == 0) return 0;
+	double estimacion = numero / 2.0;
+	double precision = 0.00001;
+
+	while (abs(estimacion * estimacion - numero) > precision) {
+		estimacion = (estimacion + numero / estimacion) / 2.0;
+	}
+	return estimacion;
 }
