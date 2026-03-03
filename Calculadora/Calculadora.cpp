@@ -8,30 +8,31 @@ double restar(double a, double b);
 double dividir(double a, double b);
 double multiplicar(double a, double b);
 double potencia(double base, double exponente);
+double raizCuadrada(double numero);
 
 int main() {
-	int opcion; 
+	int opcion;
 	double num1, num2, resultado;
 
 	do {
 		mostrarMenu();
 		cout << "Elige una opcion: ";
-		cin >> opcion; 
+		cin >> opcion;
 
-		if (opcion >= 1 && opcion <= 5) {
+		if (opcion >= 1 && opcion <= 6) {
 			cout << "Introduce el primer numero: ";
 			cin >> num1;
 			cout << "Introduce el segundo numero: ";
 			cin >> num2;
 
 			switch (opcion) {
-			case 1:		
+			case 1:
 				resultado = sumar(num1, num2);
 				cout << "Resultlado: " << resultado << endl;
 				break;
-			case 2: 
+			case 2:
 				resultado = restar(num1, num2);
-				cout << "Resultado: " << resultado << endl; 
+				cout << "Resultado: " << resultado << endl;
 				break;
 			case 3:
 				resultado = multiplicar(num1, num2);
@@ -46,12 +47,23 @@ int main() {
 					cout << "Error: División por cero" << endl;
 				}
 				break;
-			case 5: 
+			case 5:
 				resultado = potencia(num1, num2);
 				cout << "Resultado: " << resultado << endl;
 				break;
+			case 6:
+				cout << "Introduce un numero: ";
+				cin >> num1;
+				if (num1 >= 0) {
+					resultado = raizCuadrada(num1);
+					cout << "Resultado: " << resultado << endl;
+				}
+				else {
+					cout << "Error: No se puede calcular raiz de numero negativo" << endl;
+				}
+				break;
 			}
-			
+
 		}
 		else if (opcion != 0) {
 			cout << "Opcion no valida" << endl;
@@ -68,9 +80,10 @@ void mostrarMenu() {
 	cout << "=== CALCULADORA === " << endl;
 	cout << "1. Sumar" << endl;
 	cout << "2. Restar" << endl;
-	cout << "3. Multiplicar" << endl;	
+	cout << "3. Multiplicar" << endl;
 	cout << "4. Dividir" << endl;
 	cout << "5. Potencia (a^b)" << endl;
+	cout << "6. Raiz cuadrada " << endl;
 	cout << "0. Salir" << endl;
 }
 
@@ -114,4 +127,14 @@ double potencia(double base, double exponente) {
 		resultado *= base;
 	}
 	return resultado;
+}
+
+double raizCuadrada(double numero) {
+	if (numero == 0) return 0;
+	double estimacion = numero / 2.0;
+	double precision = 0.00001;
+	while (abs(estimacion * estimacion - numero) > precision) {
+		estimacion = (estimacion + numero / estimacion) / 2.0;
+	}
+	return estimacion;
 }
