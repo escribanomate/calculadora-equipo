@@ -8,6 +8,7 @@ double restar(double a, double b);
 double dividir(double a, double b);
 double multiplicar(double a, double b);
 double potencia(double base, double exponente);
+int modulo(int a, int b);
 
 int main() {
 	int opcion;
@@ -18,7 +19,7 @@ int main() {
 		cout << "Elige una opcion: ";
 		cin >> opcion;
 
-		if (opcion >= 1 && opcion <= 5) {
+		if (opcion >= 1 && opcion <= 6) {
 			cout << "Introduce el primer numero: ";
 			cin >> num1;
 			cout << "Introduce el segundo numero: ";
@@ -51,6 +52,16 @@ int main() {
 				cout << "Resultado: " << resultado << endl;
 				break;
 			case 6:
+				int entero1, entero2;
+				cout << "Introduce el primer n�mero entero: ";
+				cin >> entero1;
+				cout << "Introduce el segundo n�mero entero:";
+				cin >> entero2;
+				if (entero2 != 0) {
+					cout << "Resultado: " << modulo(entero1, entero2) << endl;
+				}
+				else {
+					cout << "Error: Divisi�n por cero" << endl;
 				cout << "Introduce un numero: ";
 				cin >> num1;
 				if (num1 >= 0) {
@@ -82,6 +93,7 @@ void mostrarMenu() {
 	cout << "3. Multiplicar" << endl;
 	cout << "4. Dividir" << endl;
 	cout << "5. Potencia (a^b)" << endl;
+	cout << "6. Modulo (resto) -" << endl;
 	cout << "0. Salir" << endl;
 }
 
@@ -125,4 +137,7 @@ double potencia(double base, double exponente) {
 		resultado *= base;
 	}
 	return resultado;
+}
+int modulo(int a, int b) {
+	return a % b;
 }
