@@ -44,7 +44,7 @@ int main() {
 					cout << "Resultado: " << resultado << endl;
 				}
 				else {
-					cout << "Error: División por cero" << endl;
+					cout << "Error: DivisiÃ³n por cero" << endl;
 				}
 				break;
 			case 5:
@@ -53,15 +53,23 @@ int main() {
 				break;
 			case 6:
 				int entero1, entero2;
-				cout << "Introduce el primer número entero: ";
+				cout << "Introduce el primer nï¿½mero entero: ";
 				cin >> entero1;
-				cout << "Introduce el segundo número entero:";
+				cout << "Introduce el segundo nï¿½mero entero:";
 				cin >> entero2;
 				if (entero2 != 0) {
 					cout << "Resultado: " << modulo(entero1, entero2) << endl;
 				}
 				else {
-					cout << "Error: División por cero" << endl;
+					cout << "Error: Divisiï¿½n por cero" << endl;
+				cout << "Introduce un numero: ";
+				cin >> num1;
+				if (num1 >= 0) {
+					resultado = raizCuadrada(num1);
+					cout << "Resultado: " << resultado << endl;
+				}
+				else {
+					cout << "Error: No se puede calcular raiz de numero negativo" << endl;
 				}
 				break;
 			}
@@ -107,13 +115,13 @@ double dividir(double a, double b) {
 }
 
 double potencia(double base, double exponente) {
-	// Caso especial: 0^0 no está definido matemáticamente 
+	// Caso especial: 0^0 no estÃ¡ definido matemÃ¡ticamente 
 	if (base == 0 && exponente == 0) {
 		cout << "Advertencia: 0^0 es indeterminado. Retornando 1." << endl;
 		return 1;
 	}
 
-	// Caso especial: cualquier número^0 = 1
+	// Caso especial: cualquier nÃºmero^0 = 1
 	if (exponente == 0) {
 		return 1;
 	}
