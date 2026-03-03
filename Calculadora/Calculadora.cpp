@@ -8,7 +8,6 @@ double restar(double a, double b);
 double dividir(double a, double b);
 double multiplicar(double a, double b);
 double potencia(double base, double exponente);
-double raizCuadrada(double numero);
 
 int main() {
 	int opcion; 
@@ -19,7 +18,7 @@ int main() {
 		cout << "Elige una opcion: ";
 		cin >> opcion; 
 
-		if (opcion >= 1 && opcion <= 6) {
+		if (opcion >= 1 && opcion <= 5) {
 			cout << "Introduce el primer numero: ";
 			cin >> num1;
 			cout << "Introduce el segundo numero: ";
@@ -51,17 +50,6 @@ int main() {
 				resultado = potencia(num1, num2);
 				cout << "Resultado: " << resultado << endl;
 				break;
-			case 6: 
-				cout << "Introduce un numero: ";
-				cin >> num1; 
-				if (num1 >= 0) {
-					resultado = raizCuadrada(num1);
-					cout << "Resultado: " << resultado << endl;
-				}
-				else {
-					cout << "Error: No se puede calcular raiz de numero negativo" << endl;
-				}	
-				break;
 			}
 			
 		}
@@ -83,7 +71,6 @@ void mostrarMenu() {
 	cout << "3. Multiplicar" << endl;	
 	cout << "4. Dividir" << endl;
 	cout << "5. Potencia (a^b)" << endl;
-	cout << "6. Raiz cuadrada " << endl;
 	cout << "0. Salir" << endl;
 }
 
@@ -127,14 +114,4 @@ double potencia(double base, double exponente) {
 		resultado *= base;
 	}
 	return resultado;
-}
-
-double raizCuadrada(double numero) {
-	if (numero == 0) return 0;
-	double estimacion = numero / 2.0;
-	double precision = 0.00001;
-	while (abs(estimacion * estimacion - numero) > precision) {
-		estimacion = (estimacion + numero / estimacion) / 2.0;
-	}
-	return estimacion;
 }
