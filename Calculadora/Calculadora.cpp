@@ -8,7 +8,6 @@ double restar(double a, double b);
 double dividir(double a, double b);
 double multiplicar(double a, double b);
 double potencia(double base, double exponente);
-double raizCuadrada(double numero);
 
 int main() {
 	int opcion;
@@ -19,7 +18,7 @@ int main() {
 		cout << "Elige una opcion: ";
 		cin >> opcion;
 
-		if (opcion >= 1 && opcion <= 6) {
+		if (opcion >= 1 && opcion <= 5) {
 			cout << "Introduce el primer numero: ";
 			cin >> num1;
 			cout << "Introduce el segundo numero: ";
@@ -44,7 +43,7 @@ int main() {
 					cout << "Resultado: " << resultado << endl;
 				}
 				else {
-					cout << "Error: División por cero" << endl;
+					cout << "Error: DivisiÃ³n por cero" << endl;
 				}
 				break;
 			case 5:
@@ -83,7 +82,6 @@ void mostrarMenu() {
 	cout << "3. Multiplicar" << endl;
 	cout << "4. Dividir" << endl;
 	cout << "5. Potencia (a^b)" << endl;
-	cout << "6. Raiz cuadrada " << endl;
 	cout << "0. Salir" << endl;
 }
 
@@ -105,13 +103,13 @@ double dividir(double a, double b) {
 }
 
 double potencia(double base, double exponente) {
-	// Caso especial: 0^0 no está definido matemáticamente 
+	// Caso especial: 0^0 no estÃ¡ definido matemÃ¡ticamente 
 	if (base == 0 && exponente == 0) {
 		cout << "Advertencia: 0^0 es indeterminado. Retornando 1." << endl;
 		return 1;
 	}
 
-	// Caso especial: cualquier número^0 = 1
+	// Caso especial: cualquier nÃºmero^0 = 1
 	if (exponente == 0) {
 		return 1;
 	}
@@ -127,14 +125,4 @@ double potencia(double base, double exponente) {
 		resultado *= base;
 	}
 	return resultado;
-}
-
-double raizCuadrada(double numero) {
-	if (numero == 0) return 0;
-	double estimacion = numero / 2.0;
-	double precision = 0.00001;
-	while (abs(estimacion * estimacion - numero) > precision) {
-		estimacion = (estimacion + numero / estimacion) / 2.0;
-	}
-	return estimacion;
 }
